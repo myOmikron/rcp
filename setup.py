@@ -4,8 +4,8 @@ with open("README.md") as f:
     long_description = f.read()
 
 setuptools.setup(
-    name="rc_protocol",
-    version="0.0.1",
+    name="rc-protocol",
+    version="0.0.2",
     author="Niklas Pfister",
     author_email="kontakt@omikron.dev",
     description="Implementation of random checksum protocol",
