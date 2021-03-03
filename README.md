@@ -10,6 +10,8 @@
 - Hash with SHA512
 - Represent the hash as hex
 
+As this protocol heavily depends on retrieving the correct time, it may be required to enable NTP on your servers.
+
 ## How to use
 
 **Get checksum**
