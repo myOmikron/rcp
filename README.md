@@ -1,18 +1,22 @@
 # RCP - Random Checksum Protocol
 
-## How to implement
-- Have a dict
-- Sort alphanumerical
-- Concat its keys and values: `key1value1key2value2...`
-- Append shared secret
-- Append current utc timestamp
-- Optional: Add a salt: `saltkey1value1...`
-- Hash with SHA512
-- Represent the hash as hex
+RCP's main use case is providing a checksum to validate requests between HTTP Servers. Therefore each server has a shared secret to which all the others have to have access to.
 
+## How to implement
+- Put all your data from your POST or GET Request in a dictionary 
+- Sort the dictionary alphanumerical by its keys.
+- Concat its values to the respective key and join them: `key1value1key2value2...`
+- Append the shared secret of your target
+- Append current utc timestamp (unix epoch - just seconds)
+- Optional: Add a salt (this may be the methods endpoint): `saltkey1value1...`
+- Hash with SHA512
+- Represent the hash as hex (lowercase)
+
+
+**Watch out**
 As this protocol heavily depends on retrieving the correct time, it may be required to enable NTP on your servers.
 
-## How to use
+## How to use the reference implementation
 
 **Get checksum**
 
