@@ -10,7 +10,8 @@ RCP's main use case is providing a checksum to validate requests between HTTP Se
 - Append current utc timestamp (unix epoch - just seconds)
 - Optional: Add a salt (this may be the methods endpoint): `saltkey1value1...`
 - Hash with SHA512
-- Represent the hash as hex (lowercase)
+- Represent the hash as hex string (lowercase)
+- The endpoint you're trying to reach should have the key stated, it expects the checksum to be in. In the reference implementation this defaults to `checksum`.
 
 
 **Watch out**
