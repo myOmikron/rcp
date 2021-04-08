@@ -1,5 +1,5 @@
 import hashlib
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def validate_checksum(
@@ -21,7 +21,7 @@ def validate_checksum(
     :return: bool
     """
     # Get current (utc) timestamp
-    current_timestamp = int(datetime.utcnow().timestamp())
+    current_timestamp = int(datetime.now(timezone.utc).timestamp())
 
     # Save checksum and delete from dict
     if checksum_key not in request:
@@ -67,7 +67,7 @@ def get_checksum(
     :return: Checksum str
     """
     # Get current (utc) timestamp
-    current_timestamp = int(datetime.utcnow().timestamp())
+    current_timestamp = int(datetime.now(timezone.utc).timestamp())
 
     # Build sorted list
     sorted_request = [key + str(request[key]) for key in sorted(request)]
