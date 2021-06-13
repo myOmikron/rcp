@@ -5,7 +5,7 @@ with open("README.md") as f:
 
 setuptools.setup(
     name="rc-protocol",
-    version="0.0.4",
+    version="0.0.5",
     author="Niklas Pfister",
     author_email="kontakt@omikron.dev",
     description="Implementation of random checksum protocol",
