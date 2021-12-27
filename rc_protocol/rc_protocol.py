@@ -4,33 +4,27 @@ from datetime import datetime, timezone
 
 def validate_checksum(
         request: dict,
+        checksum: str,
         shared_secret: str,
         salt: str = "",
         time_delta: int = 5,
         use_time_component: bool = True,
-        checksum_key: str = "checksum"
 ) -> bool:
     """
     Use this method to validate a dict with a given checksum
 
     :param request: The dictionary with all parameters
+    :param checksum: The given checksum to validate
     :param shared_secret: Shared secret the request is hashed with
     :param salt: Additional salt to use. Defaults to empty str
     :param time_delta: Time delta (+ and -) the requests should be valid, in seconds
     :param use_time_component: If specified False, time is not used for the protocol
-    :param checksum_key: The key to access to checksum in request. Defaults to "checksum".
 
     :return: bool
     """
     if use_time_component:
         # Get current (utc) timestamp
         current_timestamp = int(datetime.now(timezone.utc).timestamp())
-
-    # Save checksum and delete from dict
-    if checksum_key not in request:
-        raise ValueError("Missing " + checksum_key + " as checksum key in request")
-    checksum = request[checksum_key]
-    del request[checksum_key]
 
     # Build sorted list
     sorted_request = [key + str(request[key]) for key in sorted(request)]
