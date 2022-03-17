@@ -1,5 +1,12 @@
 import hashlib
+import json
 from datetime import datetime, timezone
+
+
+def wrap_str(v):
+    if isinstance(v, bool):
+        return str(v).lower()
+    return str(v)
 
 
 def validate_checksum(
@@ -27,7 +34,7 @@ def validate_checksum(
         current_timestamp = int(datetime.now(timezone.utc).timestamp())
 
     # Build sorted list
-    sorted_request = [key + str(request[key]) for key in sorted(request)]
+    sorted_request = [key + wrap_str(request[key]) for key in sorted(request)]
 
     # Build static_str
     static_str = "".join([str(x) for x in sorted_request])
@@ -76,7 +83,7 @@ def get_checksum(
         current_timestamp = int(datetime.now(timezone.utc).timestamp())
 
     # Build sorted list
-    sorted_request = [key + str(request[key]) for key in sorted(request)]
+    sorted_request = [key + wrap_str(request[key]) for key in sorted(request)]
 
     # Build static_str
     static_str = "".join([str(x) for x in sorted_request])

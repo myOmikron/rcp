@@ -6,6 +6,8 @@ RCP's main use case is providing a checksum to validate requests between HTTP Se
 - Put all your data from your POST or GET Request in a dictionary 
 - Sort the dictionary alphanumerical by its keys.
 - Concat its values to the respective key and join them: `key1value1key2value2...`
+  - Note: When using non str values:
+    - bool is represented as "true" or "false"
 - Append the shared secret of your target
 - Append current utc timestamp (unix epoch - just seconds)
 - Optional: Add a salt (this may be the method's endpoint): `saltkey1value1...`
