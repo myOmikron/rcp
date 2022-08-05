@@ -1,6 +1,7 @@
 # RCP - Random Checksum Protocol
 
-RCP's main use case is providing a checksum to validate requests between HTTP Servers. Therefore each server has a shared secret to which all the others have to have access to.
+RCP's main use case is providing a checksum to validate requests between HTTP Servers, 
+therefore each server has a shared secret to which all the others have to have access to.
 
 ## How to implement
 - Put all your data from your POST or GET Request in a dictionary 
@@ -18,7 +19,8 @@ This may be as a key in a POST request, or via Authentication Header.
 
 
 **Watch out**
-As this protocol heavily depends on retrieving the correct time, it may be required to enable NTP on your servers.
+As this protocol heavily depends on retrieving the correct time, 
+it may be required to enable NTP on your servers.
 
 ## How to use the reference implementation
 
@@ -59,4 +61,5 @@ else:
 ## Implementations
 - Python [rc-protocol](https://pypi.org/project/rc-protocol/)
 - Go [gorcp](https://github.com/myOmikron/gorcp)
+- Rust [rc_protocol](https://crates.io/crates/rc_protocol)
 
